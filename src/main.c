@@ -11,8 +11,8 @@ void parseFile(const char * pFile){
   content = readFile(pFile, &nb);
 //  printf("%s", content);
 
-  calendar = icalparser_parse_string(content, user); 
-  parse_iCal(calendar);
+  calendar = icalparser_parse_string(content); 
+  parse_iCal(calendar, user);
   icalcomponent_free(calendar);
 }
 
