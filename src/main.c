@@ -1,7 +1,6 @@
 #include "ical.h"
 
-void parseFile(const char * pFile)
-{
+void parseFile(const char * pFile){
   char * content;
   icalcomponent * calendar;
   long nb = 0;
@@ -15,15 +14,14 @@ void parseFile(const char * pFile)
   icalcomponent_free(calendar);
 }
 
-int main (int argc, char *argv[])
-{
+int main (int argc, char *argv[]){
   char * input_file = "/dev/stdin";
+  char * user = "";
   int index;
   int c;
 
   // Read option from the menu:
-  while ((c = getopt (argc, argv, "dhi:")) != -1)
-  {
+  while ((c = getopt (argc, argv, "dhi:U:")) != -1){
     switch (c)
     {
       case 'd':
@@ -35,8 +33,11 @@ int main (int argc, char *argv[])
       case 'i':
         input_file = optarg;
         break;
+      case 'u':
+        user = optarg;
+        break;
       case '?':
-        if (optopt == 'i')
+        if ((optopt == 'i') || (optopt == 'u'))
           fprintf (stderr, "Option -%c requires an argument.\n", optopt);
         return 1;
       default:
@@ -45,14 +46,13 @@ int main (int argc, char *argv[])
   }
 
   // Need help:
-  if (help_flag == 1)
-  {
+  if (help_flag == 1){
     puts ("ical2crontab usage:");
     puts ("  -i for input file, if not provided input is from STDIN.");
+    puts ("  -u for output the user, you can put the crontab in the /etc/cron.d/ directory.");
     puts ("  -h for this help.");
     puts ("\n\nNicolas JOURDEN - 2016");
   }
-
   // Parse the file:
   else {
     parseFile(input_file);
@@ -60,4 +60,3 @@ int main (int argc, char *argv[])
 
   return 0;
 }
-
