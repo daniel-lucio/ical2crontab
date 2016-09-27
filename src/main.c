@@ -1,30 +1,29 @@
 #include "ical.h"
 
-char * user = "";
+char *user = "";
 
 void parseFile(const char * pFile){
-  char * content;
-  icalcomponent * calendar;
+  char *content;
+  icalcomponent *calendar;
   long nb = 0;
 
   // Read from file: 
   content = readFile(pFile, &nb);
 //  printf("%s", content);
 
-  calendar = icalparser_parse_string(content); 
+  calendar = icalparser_parse_string(content, user); 
   parse_iCal(calendar);
   icalcomponent_free(calendar);
 }
 
 int main (int argc, char *argv[]){
-  char * input_file = "/dev/stdin";
+  char *input_file = "/dev/stdin";
   int index;
   int c;
 
   // Read option from the menu:
   while ((c = getopt (argc, argv, "dhi:U:")) != -1){
-    switch (c)
-    {
+    switch (c){
       case 'd':
         debug_flag = 1;
         break;
