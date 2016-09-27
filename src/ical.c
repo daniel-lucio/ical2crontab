@@ -6,8 +6,7 @@
 // 01 04 1 1 1 /usr/bin/somedirectory/somecommand
 //
 
-char * readFile(const char * pFile, long * pLength)
-{
+char * readFile(const char * pFile, long * pLength){
   FILE * f = NULL;
   char * buffer = NULL;
   char * string = NULL;
@@ -16,14 +15,12 @@ char * readFile(const char * pFile, long * pLength)
 
   f = fopen(pFile, "r");
 
-  while (used == size)
-  {
+  while (used == size){
     size += ICAL_READ_STEP_BUFFER;
     buffer = (char *) realloc( (void *) string, size);
 
     // Over flow:
-    if (buffer == NULL)
-    {
+    if (buffer == NULL){
       free(string);
       return NULL;
     }
@@ -39,8 +36,7 @@ char * readFile(const char * pFile, long * pLength)
   return string;
 }
 
-void parse_iCal(icalcomponent* comp)
-{
+void parse_iCal(icalcomponent* comp, char* user){
   icalcomponent * c;
   icalproperty * rrule;
   icalproperty * exdate;
