@@ -1,5 +1,7 @@
 #include "ical.h"
 
+char * user = "";
+
 void parseFile(const char * pFile){
   char * content;
   icalcomponent * calendar;
@@ -16,7 +18,6 @@ void parseFile(const char * pFile){
 
 int main (int argc, char *argv[]){
   char * input_file = "/dev/stdin";
-  char * user = "";
   int index;
   int c;
 
