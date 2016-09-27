@@ -22,7 +22,7 @@ int main (int argc, char *argv[]){
   int c;
 
   // Read option from the menu:
-  while ((c = getopt (argc, argv, "dhi:U:")) != -1){
+  while ((c = getopt (argc, argv, "dhi:u:")) != -1){
     switch (c){
       case 'd':
         debug_flag = 1;
