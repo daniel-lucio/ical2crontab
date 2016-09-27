@@ -206,7 +206,7 @@ void parse_iCal(icalcomponent* comp)
 
     // And the action:
     // printf ("# %s -t %.0f\n", summary, duration);
-    printf ("# %s\n", summary);
+    printf ("# %s\t%s\n", user, summary);
 
     icalrecur_iterator_free (data);
 
