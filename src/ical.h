@@ -14,7 +14,7 @@ void dump_icalrecurrencetype (struct icalrecurrencetype recur);
 
 char * readFile(const char * pFile, long * pLength);
 
-void parse_iCal(icalcomponent* comp);
+void parse_iCal(icalcomponent* comp, char* user);
 
 void parseFile(const char * pFile);
 
